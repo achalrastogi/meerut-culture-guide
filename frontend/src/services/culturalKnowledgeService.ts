@@ -11,18 +11,37 @@ class CulturalKnowledgeService {
   async loadKnowledgeBase(): Promise<void> {
     if (this.isLoaded) return;
 
-    try {
-      const response = await fetch('/product.md');
-      if (!response.ok) {
-        throw new Error('Failed to load cultural knowledge base');
+    // Try multiple possible paths for the knowledge base
+    const possiblePaths = [
+      // For GitHub Pages with base path
+      './product.md',
+      'product.md',
+      '/product.md'
+    ];
+
+    let lastError: Error | null = null;
+
+    for (const path of possiblePaths) {
+      try {
+        console.log(`Attempting to load knowledge base from: ${path}`);
+        const response = await fetch(path);
+        
+        if (response.ok) {
+          this.knowledgeBase = await response.text();
+          this.isLoaded = true;
+          console.log(`Cultural knowledge base loaded successfully from: ${path}`);
+          return;
+        } else {
+          console.warn(`Failed to load from ${path}: ${response.status} ${response.statusText}`);
+        }
+      } catch (error) {
+        console.warn(`Error loading from ${path}:`, error);
+        lastError = error instanceof Error ? error : new Error(String(error));
       }
-      this.knowledgeBase = await response.text();
-      this.isLoaded = true;
-      console.log('Cultural knowledge base loaded successfully');
-    } catch (error) {
-      console.error('Error loading knowledge base:', error);
-      throw error;
     }
+
+    // If all paths failed, throw the last error
+    throw new Error(`Failed to load cultural knowledge base from any path. Last error: ${lastError?.message}`);
   }
 
   setLLMConfig(config: LLMConfig): void {

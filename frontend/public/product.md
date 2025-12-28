@@ -195,12 +195,59 @@ Old City:
 SECTION 9: PLACES & CULTURAL EVENTS
 ==================================================
 
-Important Places:
-- Augarnath Temple (Kali Paltan Mandir)
-- Shahid Smarak
-- St. John’s Church
-- Gandhi Bagh
-- Suraj Kund
+--------------------------------------------------
+SECTION X: TOURIST PLACES & SIGHTSEEING IN MEERUT
+--------------------------------------------------
+
+Meerut offers a mix of historical, religious, cultural, and natural attractions.
+These places are commonly visited by tourists as well as local residents.
+
+Top Tourist Places in Meerut:
+
+- Augharnath Temple (Kali Paltan Mandir):
+  A historic Shiva temple closely associated with the 1857 revolt, located near the cantonment area and deeply respected by locals.
+
+- St. John’s Church:
+  One of the oldest churches in North India, known for its colonial-era architecture and historical connection to the British period.
+
+- Gandhi Bagh (Company Garden):
+  A large public garden and leisure space, popular for morning walks, family outings, and local recreation.
+
+- Shahid Smarak (Shaheed Smarak):
+  A memorial dedicated to the freedom fighters of the 1857 uprising, serving as a symbol of Meerut’s role in India’s independence movement.
+
+- Suraj Kund Park:
+  A green recreational park with walking paths and open spaces, commonly used for relaxation and light outdoor activities.
+
+- Jama Masjid:
+  An important historic mosque in Meerut, representing the city’s Islamic architectural and religious heritage.
+
+- Hastinapur Wildlife Sanctuary:
+  A nearby natural reserve known for birdlife and greenery, often visited as a short nature trip from Meerut.
+
+- Shahpeer’s Dargah (Shapir Dargah):
+  A Mughal-era mausoleum and spiritual site, respected by people of different communities.
+
+- Draupadi-ki-Rasoi (Hastinapur):
+  A mythological site linked to the Mahabharata, believed to be associated with Draupadi, located near Hastinapur.
+
+- Vidur Ka Tila:
+  An archaeological mound connected to Vidura from the Mahabharata, valued for its historical and cultural significance.
+
+Other Notable Places (Optional Visits):
+
+- Bhole Ki Jhaal:
+  A natural water body and picnic spot on the outskirts of Meerut, especially visited during weekends.
+
+- Digambar Jain Temple (Hastinapur):
+  An important Jain pilgrimage site with ancient religious significance.
+
+- Mustafa Castle:
+  A historical residential structure reflecting colonial-era influence.
+
+- Clock Tower (Ghanta Ghar / Subhash Dwar):
+  A heritage clock tower located near old market areas, serving as a local landmark.
+
 
 Nauchandi Mela:
 - Annual fair held after Holi (March–April).
