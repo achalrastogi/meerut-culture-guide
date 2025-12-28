@@ -186,6 +186,10 @@ Remember: If the information is not in the knowledge base above, you must honest
   // Test API key validity
   async testApiKey(): Promise<boolean> {
     try {
+      console.log('Testing Gemini API key...');
+      console.log('API key length:', this.apiKey.length);
+      console.log('API key starts with:', this.apiKey.substring(0, 10));
+      
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${this.apiKey}`, {
         method: 'POST',
         headers: {
@@ -199,6 +203,13 @@ Remember: If the information is not in the knowledge base above, you must honest
           }]
         }),
       });
+      
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('API test error:', errorData);
+      }
       
       return response.ok;
     } catch (error) {
