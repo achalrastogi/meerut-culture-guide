@@ -71,6 +71,44 @@ class CulturalKnowledgeService {
     return false;
   }
 
+  // Clean response to remove unwanted formatting
+  private cleanResponse(response: CulturalResponse): CulturalResponse {
+    let cleanedAnswer = response.answer;
+
+    // Remove section references like (SECTION X: TOURIST PLACES...)
+    cleanedAnswer = cleanedAnswer.replace(/\(SECTION [IVX\d]+:[^)]+\)/gi, '');
+    cleanedAnswer = cleanedAnswer.replace(/\[SECTION [IVX\d]+:[^\]]+\]/gi, '');
+    
+    // Remove reference markers like [1], [2], etc.
+    cleanedAnswer = cleanedAnswer.replace(/\[\d+\]/g, '');
+    
+    // Clean up multiple spaces
+    cleanedAnswer = cleanedAnswer.replace(/\s+/g, ' ');
+    
+    // Clean up spacing around punctuation
+    cleanedAnswer = cleanedAnswer.replace(/\s+([.,!?;:])/g, '$1');
+    
+    // Fix spacing after bullet points
+    cleanedAnswer = cleanedAnswer.replace(/([*-])\s+/g, '$1 ');
+    
+    // Trim and remove trailing incomplete sentences if response was cut off
+    cleanedAnswer = cleanedAnswer.trim();
+    
+    // If response ends with an incomplete word (no period, question mark, etc.), 
+    // try to find the last complete sentence
+    if (!cleanedAnswer.match(/[.!?]$/)) {
+      const lastSentenceMatch = cleanedAnswer.match(/(.*[.!?])/);
+      if (lastSentenceMatch) {
+        cleanedAnswer = lastSentenceMatch[1].trim();
+      }
+    }
+
+    return {
+      ...response,
+      answer: cleanedAnswer
+    };
+  }
+
   async processQuery(query: string, config: LLMConfig): Promise<CulturalResponse> {
     if (!this.isLoaded) {
       await this.loadKnowledgeBase();
@@ -102,13 +140,18 @@ class CulturalKnowledgeService {
     }
 
     // Route to appropriate processing method
+    let response: CulturalResponse;
+    
     if (config.provider === 'openai' && this.openAIService) {
-      return await this.openAIService.processQuery(trimmedQuery);
+      response = await this.openAIService.processQuery(trimmedQuery);
     } else if (config.provider === 'gemini' && this.geminiService) {
-      return await this.geminiService.processQuery(trimmedQuery);
+      response = await this.geminiService.processQuery(trimmedQuery);
     } else {
       throw new Error(`${config.provider} service not configured properly`);
     }
+
+    // Clean the response before returning
+    return this.cleanResponse(response);
   }
 }
 
